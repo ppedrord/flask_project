@@ -1,0 +1,1 @@
+web: gunicorn starting_project:app
