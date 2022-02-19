@@ -6,11 +6,11 @@
 </head>
 <body>
 
-# fixtures
+<H1>Fixtures</H1>
 
 Before we start to talk about fixtures, we need to understand a little more about tests.<br>
 
-## Test Structure 3A:
+<H1>Test Structure 3A:</H1>
 
 Kent Beck, in Test Driven-Development By Example, on page 99 said that every test consists of, at least, 3 steps:<br>
 
@@ -30,7 +30,7 @@ also from our test code? Maybe."</em> Kent Beck, Test Driven-Development By Exam
 
 From that idea, we can understand for what we use fixtures.
 
-## What are fixtures?
+<H1>What are fixtures?</H1>
 
 A <strong>test fixture</strong> is the fixed state that exists at the start of a test. A test fixture ensures
 that a test is repeatable every time a test is run it starts in the same state so it
@@ -39,7 +39,7 @@ torn down after it has finished.
 
 But, where do they but where do they come in?
 
-## Four-Phases Test:
+<H1>Four-Phases Test:</H1>
 
 Gerard Meszaros, in xUnit Test Patterns pg. 358, said that, now, we have a Four-Phases Test instead of 3, and they are:
 
@@ -66,21 +66,21 @@ it looks at the parameters in that test function’s signature, and then searche
 names as those parameters. Once pytest finds them, it runs those fixtures, captures what they returned (if anything),
 and passes those objects into the test function as arguments.
 
-## Autouse:
+<H1>Autouse:</H1>
 
 Sometimes you may want to have a fixture (or even several) that you know all your tests will depend on.
 <strong>“Autouse” fixtures</strong> are a convenient way to make all tests automatically request them. This can cut out
 a lot of redundant requests, and can even provide more advanced fixture usage (more on that further down).
 We can make a fixture an autouse fixture by passing in <strong>autouse=True</strong> to the fixture’s decorator.
 
-## TearDown:
+<H1>TearDown:</H1>
 
 When we run our tests, we’ll want to make sure they clean up after themselves so they don’t mess with
 any other tests (and also so that we don’t leave behind a mountain of test data to bloat the system).
 Fixtures in pytest offer a very useful teardown system, which allows us to define the specific
 steps necessary for each fixture to clean up after itself.
 
-## Teard Down - yield:
+<H1>Tear Down - yield:</H1>
 
 <strong>“Yield” fixtures</strong> yield instead of return. With these fixtures, we can run some code and pass an object back
 to the requesting fixture/test, just like with the other fixtures. The only differences are:
@@ -96,7 +96,7 @@ and then move on to the next fixture in the list to do the same thing.<br>
 <p>Once the test is finished, pytest will go back down the list of fixtures, but in the reverse order, taking
 each one that yielded, and running the code inside it that was after the yield statement.
 
-## Fixtures Scopes:
+<H1>Fixtures Scopes:</H1>
 
 Fixtures are created when first requested by a test, and are destroyed based on their scope:
 
@@ -115,7 +115,7 @@ Fixtures are created when first requested by a test, and are destroyed based on 
 <p><strong>-session</strong>: the fixture is destroyed at the end of the test session;
 
 
-## Fixture Availability:
+<H1>Fixture Availability:</H1>
 
 <strong><em>Fixture availability is determined from the perspective of the test</em></strong>. A fixture is only available for tests
 to request if they are in the scope that fixture is defined in. If a fixture is defined inside a class, it
@@ -126,7 +126,7 @@ the module, than every test in that module, even if it’s defined inside a clas
 autouse fixture is defined in.A fixture can also request any other fixture, no matter where it’s defined,
 as long as the test requesting them can see all fixtures involved.<\p>
 
-## Built-in Fixtures:
+<H1>Built-in Fixtures:</H1>
 
 <p>Fixtures are defined using the <strong>@pytest.fixture</strong> decorator. Pytest has useful built-in fixtures,
 listed down below for reference:
@@ -167,12 +167,12 @@ listed down below for reference:
 
 <p><strong>tmpdir_factory</strong>: Make session-scoped temporary directories and return py.path.local objects; replaced by tmp_path_factory.
 
-## References:
+<H1>References:</H1>
 
 <p><strong>MESZAROS, Gerard</strong>. <em>xUnit Test Patterns</em>. Addison-Wesley, 2007.<br>
 <p><strong>BECK, Kent</strong>. <em>Test Driven-Development By Example</em>. Addison-Wesley, 2000.<br>
 <p><strong>pytest fixtures: explicit, modular, scalable</strong>. <em>pytest, Full pytest Documentation</em>, 2015. Available in:
-<https://docs.pytest.org/en/6.2.x/fixture.html#what-fixtures-are>. Accessed on: February 2, 2022
+https://docs.pytest.org/en/6.2.x/fixture.html#what-fixtures-are. Accessed on: February 2, 2022
 
 </body>
 </html>
