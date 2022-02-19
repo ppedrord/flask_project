@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fixtures</title>
+</head>
+<body>
+
+# fixtures
+
+Before we start to talk about fixtures, we need to understand a little more about tests.<br>
+
+## Test Structure 3A:
+
+Kent Beck, in Test Driven-Development By Example, on page 99 said that every test consists of, at least, 3 steps:<br>
+
+<p><strong>-Arrange</strong>: is where we create objects, provide data and prepare everything for we use to exercise our method;
+
+<p>-<strong>Act</strong>:  is where we interact with the SUT (System Under Test);
+
+<p>-<strong>Assert</strong>: is where we look the results given after the Act step and check if it looks how we'd expected.</p>
+
+
+<p>All these steps can be in a single line of code, and Kent Beck says that it is called One Step Test.<br>
+
+But, create tests can result in a redundant code, causing problems like performance drop.<br>
+
+<p><em>"If we want to remove duplication from our model code, do we want to remove it
+also from our test code? Maybe."</em> Kent Beck, Test Driven-Development By Example, pg. 163<br>
+
+From that idea, we can understand for what we use fixtures.
+
+## What are fixtures?
+
+A <strong>test fixture</strong> is the fixed state that exists at the start of a test. A test fixture ensures
+that a test is repeatable every time a test is run it starts in the same state so it
+should produce the same results. A fixture may be set up before the test runs and
+torn down after it has finished.
+
+But, where do they but where do they come in?
+
+## Four-Phases Test:
+
+Gerard Meszaros, in xUnit Test Patterns pg. 358, said that, now, we have a Four-Phases Test instead of 3, and they are:
+
+<p><strong>-Setup</strong>: In the first phase, we set up the test fixture that is required for the SUT to exhibit the expected behavior as
+well as anything you need to put in place to be able to observe the actual outcome;
+
+
+<p><strong>-Exercise</strong>: In the second phase, we interact with the SUT;
+
+
+<p><strong>-Verify</strong>: In the third phase, we do whatever is necessary to determine whether the expected outcome has been obtained;
+
+
+<p><strong>TeardDown</strong>: In the fourth phase, we tear down the test fixture to put the world back into the state in which we found it.</p>
+
+
+<p>So, instead we run the same code many times, we can just attach the fixture function to tests and it will run and return
+the results for the test before it run any of them.
+
+So, the fixtures are how we prepare for a test, but how do we tell to pytest wich fixture is going to be used
+for wich test?</p>
+At a basic level, test functions request fixtures by declaring them as arguments. When pytest goes to run a test,
+it looks at the parameters in that test function’s signature, and then searches for fixtures that have the same
+names as those parameters. Once pytest finds them, it runs those fixtures, captures what they returned (if anything),
+and passes those objects into the test function as arguments.
+
+## Autouse:
+
+Sometimes you may want to have a fixture (or even several) that you know all your tests will depend on.
+<strong>“Autouse” fixtures</strong> are a convenient way to make all tests automatically request them. This can cut out
+a lot of redundant requests, and can even provide more advanced fixture usage (more on that further down).
+We can make a fixture an autouse fixture by passing in <strong>autouse=True</strong> to the fixture’s decorator.
+
+## TearDown:
+
+When we run our tests, we’ll want to make sure they clean up after themselves so they don’t mess with
+any other tests (and also so that we don’t leave behind a mountain of test data to bloat the system).
+Fixtures in pytest offer a very useful teardown system, which allows us to define the specific
+steps necessary for each fixture to clean up after itself.
+
+## Teard Down - yield:
+
+<strong>“Yield” fixtures</strong> yield instead of return. With these fixtures, we can run some code and pass an object back
+to the requesting fixture/test, just like with the other fixtures. The only differences are:
+
+<p>- The <em>return</em> is exchanged for the <em>yield</em>.
+
+
+<p>- Any TearDown code for this fixture is placed <strong>after</strong> the yield.
+
+
+<p>Once pytest figures out a linear order for the fixtures, it will run each one up until it returns or yields,
+and then move on to the next fixture in the list to do the same thing.<br>
+<p>Once the test is finished, pytest will go back down the list of fixtures, but in the reverse order, taking
+each one that yielded, and running the code inside it that was after the yield statement.
+
+## Fixtures Scopes:
+
+Fixtures are created when first requested by a test, and are destroyed based on their scope:
+
+<p><strong>-function</strong>: the default scope, the fixture is destroyed at the end of the test;
+
+
+<p><strong>-class</strong>: the fixture is destroyed during teardown of the last test in the class;
+
+
+<p><strong>-module</strong>: the fixture is destroyed during teardown of the last test in the module;
+
+
+<p><strong>-package</strong>: the fixture is destroyed during teardown of the last test in the package;
+
+
+<p><strong>-session</strong>: the fixture is destroyed at the end of the test session;
+
+
+## Fixture Availability:
+
+<strong><em>Fixture availability is determined from the perspective of the test</em></strong>. A fixture is only available for tests
+to request if they are in the scope that fixture is defined in. If a fixture is defined inside a class, it
+can only be requested by tests inside that class. But if a fixture is defined inside the global scope of
+the module, than every test in that module, even if it’s defined inside a class, can request it.
+
+<p>In the same way, a test can also only be affected by an autouse fixture if that test is in the same scope that
+autouse fixture is defined in.A fixture can also request any other fixture, no matter where it’s defined,
+as long as the test requesting them can see all fixtures involved.<\p>
+
+## Built-in Fixtures:
+
+<p>Fixtures are defined using the <strong>@pytest.fixture</strong> decorator. Pytest has useful built-in fixtures,
+listed down below for reference:
+
+<p><strong>capfd</strong>: Capture, as text, output to file descriptors 1 and 2.
+
+<p><strong>capfdbinary</strong>: Capture, as bytes, output to file descriptors 1 and 2.
+
+<p><strong>caplog</strong>: Control logging and access log entries.
+
+<p><strong>capsys</strong>: Capture, as text, output to sys.stdout and sys.stderr.
+
+<p><strong>capsysbinary</strong>: Capture, as bytes, output to sys.stdout and sys.stderr.
+
+<p><strong>cache</strong>: Store and retrieve values across pytest runs.
+
+<p><strong>doctest_namespace</strong>: Provide a dict injected into the docstests namespace.
+
+<p><strong>monkeypatch</strong>: Temporarily modify classes, functions, dictionaries, os.environ, and other objects.
+
+<p><strong>pytestconfig</strong>: Access to configuration values, pluginmanager and plugin hooks.
+
+<p><strong>record_property</strong>: Add extra properties to the test.
+
+<p><strong>record_testsuite_property</strong>: Add extra properties to the test suite.
+
+<p><strong>recwarn</strong>: Record warnings emitted by test functions.
+
+<p><strong>request</strong>: Provide information on the executing test function.
+
+<p><strong>testdir</strong>: Provide a temporary test directory to aid in running, and testing, pytest plugins.
+
+<p><strong>tmp_path</strong>: Provide a pathlib.Path object to a temporary directory which is unique to each test function.
+
+<p><strong>tmp_path_factory</strong>: Make session-scoped temporary directories and return pathlib.Path objects.
+
+<p><strong>tmpdir</strong>: Provide a py.path.local object to a temporary directory which is unique to each test function; replaced by tmp_path.
+
+<p><strong>tmpdir_factory</strong>: Make session-scoped temporary directories and return py.path.local objects; replaced by tmp_path_factory.
+
+## References:
+
+<p><strong>MESZAROS, Gerard</strong>. <em>xUnit Test Patterns</em>. Addison-Wesley, 2007.<br>
+<p><strong>BECK, Kent</strong>. <em>Test Driven-Development By Example</em>. Addison-Wesley, 2000.<br>
+<p><strong>pytest fixtures: explicit, modular, scalable</strong>. <em>pytest, Full pytest Documentation</em>, 2015. Available in:
+<https://docs.pytest.org/en/6.2.x/fixture.html#what-fixtures-are>. Accessed on: February 2, 2022
+
+</body>
+</html>
