@@ -13,7 +13,7 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    background: #013D2A;
+    background: #10111e;
     overflow-y: auto;
     width: 300px;
     transition: all ease-in-out 0.5s;
@@ -51,7 +51,7 @@ body {
 }
 
 #header .profile .social-links a:hover{
-    background: #146c43;
+    background: #001B64;
 }
 
 .nav-menu{
@@ -96,7 +96,7 @@ body {
 }
 
 section#home {
-    background-image: url("./images/home-background.jpeg");
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url("./images/home-background.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -131,7 +131,7 @@ section#home div#scroll a {
 i.menu-mobile {
     position: fixed;
     color: #fff;
-    background-color: #1F4E48;
+    background-color: #111832;
     right: 1rem;
     top: 1rem;
     font-size: 1.5rem;
@@ -184,7 +184,7 @@ i.menu-mobile {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #1F4E48;
+  background-color: #111832;
 }
 
 .section-bg {
