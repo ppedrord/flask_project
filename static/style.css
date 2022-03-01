@@ -159,4 +159,7 @@ i.menu-mobile {
         margin-right: 0;
         font-size: 1rem;
     }
+    #main {
+        margin-left: 0;
+    }
 }
