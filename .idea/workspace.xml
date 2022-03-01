@@ -65,7 +65,6 @@
   </component>
   <component name="RunManager">
     <configuration name="flask_project" type="PythonConfigurationType" factoryName="Python">
-      <module name="flask_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -73,11 +72,12 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\Pedro Paulo\flask_project\app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -103,7 +103,7 @@
       <workItem from="1645292696616" duration="103000" />
       <workItem from="1645299202048" duration="33000" />
       <workItem from="1645397380674" duration="1766000" />
-      <workItem from="1646078527907" duration="24303000" />
+      <workItem from="1646078527907" duration="25290000" />
     </task>
     <servers />
   </component>
