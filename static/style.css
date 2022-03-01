@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 
-html, body{
+html,
+body {
     font-family: Ubuntu, Arial;
     width: 100%;
     height: 100%;
@@ -57,7 +58,8 @@ html, body{
     padding: 1.5rem;
 }
 
-.nav-menu a, .nav-menu a:focus {
+.nav-menu a,
+.nav-menu a:focus {
     display: flex;
     align-items: center;
     color: #a8a9b4;
@@ -65,15 +67,11 @@ html, body{
     font-size: 15px;
 }
 
-.nav-menu a i, .nav-menu a:focus i {
+.nav-menu a i,
+.nav-menu a:focus i {
     font-size: 24px;
     padding-right: 0.8rem;
     color: #6f7180;
-}
-
-.nav-menu a:hover, .nav-menu .active, .nav-menu .active:focus, .nav-menu li:hover > a {
-    text-decoration: none;
-    color: #fff;
 }
 
 .nav-menu a:hover,
@@ -84,9 +82,10 @@ html, body{
     color: #fff;
 }
 
-.nav-menu a:hover,
-.nav-menu .active,
-.nav-menu .active:focus,
+
+.nav-menu a:hover i,
+.nav-menu .active i,
+.nav-menu .active:focus i,
 .nav-menu li:hover > a i {
     color: #cff4fc;
 }
@@ -132,7 +131,7 @@ section#home div#scroll a {
 i.menu-mobile {
     position: fixed;
     color: #fff;
-    background-color: #013D2A;
+    background-color: #1F4E48;
     right: 1rem;
     top: 1rem;
     font-size: 1.5rem;
@@ -172,4 +171,18 @@ i.menu-mobile {
     #main {
         margin-left: 0;
     }
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  width: 12px;
+  box-shadow: inset 0 0 .3rem #00000050;
+  background-color: #fff ;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #1F4E48;
 }
