@@ -107,7 +107,7 @@ section#home {
 }
 
 section#home h2 {
-    font-size: 4.5rem;
+    font-size: 6rem;
 }
 
 section#home span#subtitle {
@@ -126,4 +126,37 @@ section#inicio div#scroll {
 section#inicio div#scroll a {
     text-decoration: none;
     color: #fff;
+}
+
+i.menu-mobile {
+    position: fixed;
+    color: #fff;
+    background-color: #013D2A;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    border-radius: 4rem;
+    cursor: pointer;
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    #header {
+        left: -300px;
+    }
+    i.menu-mobile {
+        display: flex;
+    }
+    section#home h2 {
+        font-size: 3.5rem;
+    }
+    span#subtitle {
+        margin-right: 0;
+        font-size: 1rem;
+    }
 }
