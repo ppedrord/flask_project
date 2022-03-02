@@ -34,7 +34,7 @@ body {
     font-size: 24px;
     margin: 0;
     padding: 0;
-    font-weight: 0;
+    font-weight: 600;
     text-align: center;
     color: #fff;
 }
@@ -162,11 +162,11 @@ i.menu-mobile {
         display: flex;
     }
     section#home h2 {
-    font-size: 3.5rem;
+    font-size: 8rem;
     }
     section#home span#subtitle {
     margin-right: 0;
-    font-size: 1rem;
+    font-size: 2rem;
     }
     #main {
         margin-left: 0;
