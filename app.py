@@ -17,7 +17,8 @@ def route_contact():
 def route_user(username):
     return render_template("users.html", username=username)
 
-@app.route("/fixtures")
+
+@app.route("/portfolio/fixtures")
 def route_fixtures():
     return render_template("fixtures.html")
 
