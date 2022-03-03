@@ -22,3 +22,38 @@ navItem.forEach((item) => {
     }
   });
 });
+
+/* Animate all items with 'data-animation' attribute */
+
+const item = document.querySelectorAll("[data-animation]");
+
+const animeScroll = () => {
+  const windowTop = window.pageYOffset + window.innerHeight * 0.88 ;
+
+  item.forEach((element) => {
+    if (windowTop > element.offsetTop) {
+      element.classList.add("animate");
+    } else {
+      element.classList.remove("animate");
+    }
+  });
+};
+
+animeScroll();
+
+window.addEventListener("scroll", ()=>{
+  animeScroll();
+})
+
+/* Enable Submit button loading */
+
+
+const btnSubmit = document.querySelector('#btn-submit')
+const btnSubmitLoader = document.querySelector('#btn-submit-loader')
+
+btnSubmit.addEventListener("click", ()=>{
+  btnSubmitLoader.style.display = "block";
+  btnSubmit.style.display = "none"
+})
+
+
