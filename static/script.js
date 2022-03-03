@@ -56,4 +56,9 @@ btnSubmit.addEventListener("click", ()=>{
   btnSubmit.style.display = "none"
 })
 
+/* Remove message after 5 seconds */
+
+setTimeout(() => {
+  document.querySelector('#alert').style.display = 'none';
+}, 5000)
 
