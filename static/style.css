@@ -96,7 +96,8 @@ body {
 }
 
 section#home {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url("./images/home-background.jpeg");
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.50),
+    rgba(0, 0, 0, 0.50)), url("./images/home-background.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -129,20 +130,20 @@ section#home div#scroll a {
 }
 
 i.menu-mobile {
-    position: fixed;
-    color: #fff;
-    background-color: #111832;
-    right: 1rem;
-    top: 1rem;
-    font-size: 1.5rem;
-    border-radius: 4rem;
-    cursor: pointer;
-    z-index: 10;
-    width: 45px;
-    height: 45px;
-    display: none;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  color: #fff;
+  background-color: #111832;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  border-radius: 4rem;
+  cursor: pointer;
+  z-index: 10;
+  width: 45px;
+  height: 45px;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-nav-active {
@@ -162,11 +163,11 @@ i.menu-mobile {
         display: flex;
     }
     section#home h2 {
-    font-size: 8rem;
+    font-size: 3.5rem;
     }
     section#home span#subtitle {
     margin-right: 0;
-    font-size: 2rem;
+    font-size: 1rem;
     }
     #main {
         margin-left: 0;
