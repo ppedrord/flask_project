@@ -43,7 +43,7 @@ body {
     font-size: 1rem;
     background: #495057;
     color: #fff;
-    padding: 0.6rem;
+    padding: 0.5rem;
     margin-right: 1rem;
     border-radius: 50%;
     transition: 0.3s;
@@ -51,7 +51,7 @@ body {
 }
 
 #header .profile .social-links a:hover{
-    background: #001B64;
+    background: gray;
 }
 
 .nav-menu{
