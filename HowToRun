@@ -1,0 +1,14 @@
+How to Install
+1. Run - python -m venv .\venv
+1. Run - \venv\Scripts\activate
+2. Run - pip install -r requirements.txt
+
+
+How to Run
+1. Run - \venv\Scripts\activate
+2. Run - set FLASK_APP=app.py
+3. Run - set FLASK_ENV=development
+4. Run flask run --host 0.0.0.0 --port 8081
+
+    -- IF YOU WANT TO STOP THE RUN --
+    Press Ctrl + C
